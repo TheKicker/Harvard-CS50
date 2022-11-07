@@ -2,6 +2,8 @@
 
 Presented by EdX - https://www.edx.org/course/introduction-computer-science-harvardx-cs50x
 
+CS50 Syllabus - https://cs50.harvard.edu/x/2022/
+
 Harvard University - https://www.harvard.edu/
 
 CS50 Wikipedia - https://en.wikipedia.org/wiki/CS50

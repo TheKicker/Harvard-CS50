@@ -1,0 +1,27 @@
+{
+  "name": "cs50",
+  "version": "1.0.0",
+  "author": "TheKicker",
+  "license": "ISC",
+  "description": "My personal journey taking Harvard University's introduction to the intellectual enterprises of computer science and the art of programming for majors and non-majors alike. An entry-level course taught by David J. Malan, CS50x teaches students how to think algorithmically and solve problems efficiently. ",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/TheKicker/Harvard-CS50.git"
+  },
+  "keywords": [
+    "computer-science",
+    "education",
+    "edx",
+    "cs50",
+    "harvard"
+    "edx-cs50"
+  ],
+  "bugs": {
+    "url": "https://github.com/TheKicker/Harvard-CS50/issues"
+  },
+  "homepage": "https://github.com/TheKicker/Harvard-CS50#readme"
+}
