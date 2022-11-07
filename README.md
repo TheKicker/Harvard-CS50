@@ -24,6 +24,21 @@ HarvardX pursues the science of learning. By registering as an online learner in
 
 Harvard University and HarvardX are committed to maintaining a safe and healthy educational and work environment in which no member of the community is excluded from participation in, denied the benefits of, or subjected to discrimination or harassment in our program. All members of the HarvardX community are expected to abide by Harvard policies on nondiscrimination, including sexual harassment, and the edX Terms of Service. If you have any questions or concerns, please contact harvardx@harvard.edu and/or report your experience through the edX contact form.
 
+## Structure
+
+Lecture 00 - Scratch <br>
+Lecture 01 - C <br>
+Lecture 02 - Arrays <br>
+Lecture 03 - Algorithms <br>
+Lecture 04 - Memory <br>
+Lecture 05 - Data Structures <br>
+Lecture 06 - Python <br>
+Lecture 07 - SQL <br>
+Lecture 08 - HTML, CSS, JavaScript <br>
+Lecture 09 - Flask <br>
+Lecture 10 - Emoji <br>
+Cybersecurity <br>
+
 ## Instructors
 
 David J. Malan - Gordon Mckay Professor of the Practice of Computer Science at Harvard University
