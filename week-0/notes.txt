@@ -1,0 +1,149 @@
+# Lecture 0 - Intro and Scratch
+
+Input -> 🔳 -> Output
+
+Humans speak in Unary 
+Computers speak in Binary 
+
+000 is 0 in binary
+000 is 1
+010 is 2
+011 is 3
+100 is 4
+
+Why this system? Computers are good at storing things and bits are storing electricity or don't storing electricity
+- on or off, one or zero, true or false
+
+Transistors are just tiny switches (like redstone in minecraft lol)
+- our computers and phones, even our toasters can have millions of them 
+
+123 - 1 is in hundreds place, 2 in tens place, 3 in singles place or technically the powers of ten (10^2,10^1,10^0)
+We establish both a meaning to the numbers and the column they reside in
+
+Binary is similar in concept but in powers of 2 because we have two states. On or off. 
+256, 128, 64, 32, 16, 8, 4, 2, 1
+
+With 2 bits, the highest we can count is 3
+With 3 bits, the highest we can count is 8
+
+But how do we store letters, colors, etc.?
+
+Context dependent filetypes - so the computer can understand the difference in references between .pdf vs .csv vs .txt
+
+ASCII (American Standard Code for Information Interchange)
+- Started in US 
+- Has a little bias toward English language (letters and punctuation)
+
+A - 65
+B - 66
+C - 67 
+D - 68
+E - 69
+
+72 73 33 or 01001000 01001001 00100001
+HI!
+
+72 105 33
+Hi!
+
+These messages are stored in bits or in groups of 8 switches
+- a byte is equal to 8 bits
+- the highest you can count in 8 bits is 255
+
+bit 
+byte (8 bits)
+kilobyte (1024 bytes or 2^10)
+megabyte (1,048,567 bytes or 2^20)
+gigabyte (1,073,741,824 bytes or 2^30)
+terabyte (1,099,511,627,776 bytes or 2^40)
+
+The issue with ASCII is it needs to support other languages (accents, punctuations, etc.) as well 
+
+So the world adopted Unicode
+
+For example, emojii are stored in Unicode
+- Companies can have different emojii illustrations because only the descriptions have been standardized 
+
+We can map other forms of information as bits as well
+- Hexcode and RGB are stored as combinations of numbers to represent colors
+- Images are a big array of numbers which are converted column by row and the numbers are converted to color stored as pixels
+- Videos are hundreds of frames of images made to transition rapidly and emulate motion (think of a flipbook) 60 frames per second, 30, etc. 
+- Sounds (like MIDI) are represented by notes and the duration
+
+The human-to-computer translation is represented through context and file extension
+
+Algorithms are step by step instructions to handle inputs
+
+Contact book algorithm (pseudocode)
+- We want to find John Harvard
+- Open to the "H" last name section (proceeding letter by letter until we have Harvard)
+- Scroll to the "J" first name section (proceeding letter by letter until we have John)
+- Open his Contact
+- Find his phone numbers
+- Done!
+
+The time it takes to do this can be represented by n
+
+n is the quickest - our algorithm written above
+n/2 is close but slower - searching every 2nd page of the contact book
+log2n is the slowest - searching every page of the contact book
+
+One way we can write code right now is to write pseudocode
+- Our example contact book algorithm is a basic concept of pseudocode
+
+For writing actual code we have a lot of elements we can use to get to the n solution
+- Variables are a way to store information 
+- Functions are a “chunk” of code that you can use over and over again, rather than writing it out multiple times
+- Conditionals are branches that lead to different paths, like forks in the road
+- Booleans are on or off, true or false, 1 or 0
+- Loops are cycles that run the same section of code until we have expected Output
+
+When programming - we need to anticipate as many (in a perfect world ALL) possibilities
+- What if John Harvard doesn't exist? We need a chunk of code to quit or leave the contact book with a message saying this
+
+# C
+#include <stdio.h>
+
+int main(void)
+{
+    printf("hello, world\n");
+}
+
+#Python
+
+print("hello, world")
+
+
+Scratch - a super easy graphical way to learn programming concepts without the extra #<>{};
+
+Features a number of coding blocks designed to start teaching beginners the concepts of programming using pseudocode
+- Motions
+- Looks
+- Sounds
+- Events
+- Controls
+- Sensing
+- Operators
+- Variables
+- MyBlocks (custom functions)
+
+The Pablo Algorithm (in scratch)
+- When 'green flag' clicked
+- Play 'meow' sounds
+- Wait one second
+- Play 'meow' sounds
+- Wait one second
+- Play 'meow' sounds
+
+This works but why is it bad? 
+- A lot of unnecessary repetition 
+- Longer than needed
+
+The new Pablo Algorithm (in scratch)
+- When 'green flag' clicked
+- Repeat three times
+        Play 'meow' sounds
+        Wait one second
+
+Same result, simpler and cleaner code - best design
+

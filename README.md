@@ -10,7 +10,11 @@ CS50 Wikipedia - https://en.wikipedia.org/wiki/CS50
 
 FreeCodeCamp CS50 - https://www.freecodecamp.org/news/harvard-cs50/
 
----
+Webpage 2 PDF - https://www.web2pdfconvert.com/
+
+Scratch - https://scratch.mit.edu/
+
+<hr>
 
 ## About 
 
