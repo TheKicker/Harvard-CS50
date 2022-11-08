@@ -1,6 +1,8 @@
 # Created by https://www.toptal.com/developers/gitignore/api/c,python,node
 # Edit at https://www.toptal.com/developers/gitignore?templates=c,python,node
 
+.DS_Store
+
 ### C ###
 # Prerequisites
 *.d
