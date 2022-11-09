@@ -14,7 +14,7 @@ Webpage 2 PDF - https://www.web2pdfconvert.com/
 
 Scratch - https://scratch.mit.edu/
 
-Homework submit - git push https://github.com/me50/TheKicker.git
+Problem sets - https://cs50.harvard.edu/x/2022/psets/
 
 CS50 Classpage - https://cs50.me/cs50x
 
