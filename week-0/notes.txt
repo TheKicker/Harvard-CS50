@@ -6,7 +6,7 @@ Humans speak in Unary
 Computers speak in Binary 
 
 000 is 0 in binary
-000 is 1
+001 is 1
 010 is 2
 011 is 3
 100 is 4
