@@ -16,7 +16,7 @@ Scratch - https://scratch.mit.edu/
 
 Problem sets - https://cs50.harvard.edu/x/2022/psets/
 
-CS50 Classpage - https://cs50.me/cs50x
+CS50 Class page - https://cs50.me/cs50x
 
 <hr>
 

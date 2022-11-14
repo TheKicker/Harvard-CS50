@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=c,python,node
 
 .DS_Store
+.vscode
 
 ### C ###
 # Prerequisites
