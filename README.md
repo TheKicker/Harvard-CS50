@@ -18,6 +18,8 @@ Problem sets - https://cs50.harvard.edu/x/2022/psets/
 
 CS50 Class page - https://cs50.me/cs50x
 
+me50/thekicker - https://github.com/me50/TheKicker
+
 <hr>
 
 ## About 
