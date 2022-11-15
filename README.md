@@ -1,4 +1,4 @@
-# Harvard University - CS50 Intro to Computer Science
+# <img src="harvard.png" height=20>&nbsp; Harvard University - CS50 Intro to Computer Science
 
 Presented by EdX - https://www.edx.org/course/introduction-computer-science-harvardx-cs50x
 
@@ -18,7 +18,9 @@ Problem sets - https://cs50.harvard.edu/x/2022/psets/
 
 CS50 Class page - https://cs50.me/cs50x
 
-me50/thekicker - https://github.com/me50/TheKicker
+me50/TheKicker - https://github.com/me50/TheKicker
+
+TheKicker/Harvard-CS50 - https://github.com/TheKicker/Harvard-CS50
 
 <hr>
 

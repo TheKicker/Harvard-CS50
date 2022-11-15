@@ -1,1 +1,98 @@
 # Lecture 1 - C
+
+C is a great place to start for the fundamentals
+- underlies other languages, for example python
+
+Quality of code has three tenants
+- Correctness, does our code handle the problem and bring about a solution, handling errors and potential outcomes
+- Design, how well is it written, easily understood by someone else, and commented for future use
+- Style, how well formatted our code is visually, structure, indents, etc. 
+
+IDE (Integrated Development Environments)
+- Where we actually write our code (can't use Word)
+- Notepad, sublime, vscode, jetbrains, etc. 
+
+A compiler is a program that converts one language to another 
+- in linux, make ____ compiles a file we have written
+
+VS Code is a popular IDE, downloadable or able to be used in the cloud
+- CLI Terminal on bottom (command line interface)
+- File system on the left
+- Extensions to help us in our coding journey
+
+# C Basics
+
+{} is a sort of container 
+f in printf refers to "formatted" string
+() allow us to give a parameter or input to the printf function
+; means the end of a string
+
+side effects (like console.log or print()) can be helpful in debugging
+
+variables are ways to store data for later use, makes our code reusable
+
+include < ______.h > is how we include libraries
+
+Libraries are ways to import other functionality into your program without having to recreate it
+
+# Linux CLI Basics
+
+cd - change directory
+ls - list files
+cp - copy file or directory
+mkdir - make a directory 
+mv - move a file
+rm - remove a file
+rmdir - remove a directory
+
+# Types, format codes, and operators
+
+bool - is true or false, 1 or 0, yes or no
+char - a single character
+double - a floating point value 
+float - a real number with decimal points
+int - integers to a certain size or bits
+long - integers with a much larger size
+string - a group of characters
+
+%c - format code for characters
+%f - format code for float or doubles
+%i - format code for integers
+%li - format code for long integers
+%s - format code for strings
+
++ addition
+- subtraction
+* multiplication
+/ division
+% remainder
+== comparison
+|| or
+&& and
+! not
+
+syntactic sugar
+++ add one
+-- subtract one
+
+Lots of C code written and examples, check out "c-lecture-files" directory
+
+Integer Overflow
+- Y2K Problem, we stored years as final 2 digits because centuries don't happen often
+- So 1999 would reset to 1900 since the first two digits are assumed
+- A lot of people wrote a lot of code that mostly warded off this problem
+
+However 
+
+!!! THE WORLD IS GOING TO END ON JANUARY 19th OF 2038 !!!
+
+Most computers operate on 32 bits, thus, the seconds since Jan 1 1970 is going to max out in 2038
+- Clocks rolling over will all of a sudden be sent back to 13th of December 1901
+
+Many modern systems have been upgraded to measure Unix time with signed 64-bit integers which will not overflow for 292 billion years
+
+Boeing Airplane example
+
+Goal of CS50 is not to be perfect in everything we do, but to start to begin thinking of the limits and potential side effects of our code
+
+Computers will take us quite literally with what we tell them to do 
