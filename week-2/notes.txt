@@ -1,2 +1,57 @@
 # Lecture 2 - Arrays
 
+make hello is not a compiler, it's actually a program that calls 'clang'
+
+clang is our compiler and will output default unless we give it options in the command line
+
+clang hello.c will output as a.out (a historical convention for assembler.output)
+
+clang -o hello hello.c
+clang calls the compiler
+-o is the output flag 
+hello is our desired file name
+hello.c is our original file that needs compiled
+
+Compiling source code into machine code is actually made up of four smaller steps:
+- preprocessing
+- compiling
+- assembling
+- linking
+
+Preprocessing involves replacing lines that start with a #, like #include. For example, #include <cs50.h> will tell clang to look for that header file, since it contains content, like prototypes of functions, that we want to include in our program. Then, clang will essentially copy and paste the contents of those header files into our program.
+
+Compiling takes our source code, in C, and converts it to another language called assembly language
+
+Assembling involves translating the assembly language to binary. The instructions in binary are machine code, which a computer’s CPU can run directly.
+
+Then, linking, where previously compiled versions of libraries that we included earlier, like cs50.c, are actually combined with the compiled binary of our program. In other words, linking is the process of combining all the machine code for hello.c, cs50.c, and stdio.c into our one binary file, a.out or hello.
+
+Bugs are mistakes (accidental or otherwise) that are not the desired behavior of a program
+Debugging is the process of of finding and fixing those bugs.
+
+A physical bug was actually discovered many years ago inside a very large computer, the Harvard Mark II
+
+Rubber Duck Debugging - where we explain what we’re trying to do in our code to a rubber duck (or other inanimate object). By talking through our own code out loud step-by-step, we might realize our mistake.
+
+https://rubberduckdebugging.com/
+
+# Memory
+
+bool - 1 byte
+char - 1 byte
+double - 8 bytes
+float - 4 bytes
+int - 4 bytes
+long - 8 byte
+string - ? bytes
+
+# Arrays
+
+A great way to store a set of data
+- Declared using square brackets []
+
+int test_scores[3]
+test_scores = [85, 92, 96]
+
+null can be represented as \0
+
