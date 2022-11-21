@@ -58,3 +58,15 @@ David J. Malan - Gordon Mckay Professor of the Practice of Computer Science at H
 Doug Lloyd - Senior Preceptor in Computer Science at Harvard University
 
 Brian Yu - Senior Preceptor in Computer Science at Harvard University
+
+## TheKicker's CS50 Gradebook
+
+| Week      | Type | Title | Grade|
+| ----------- | ----------- | ----------- | ------------- |
+| 0      | Homework  | Scratch    | ![](https://geps.dev/progress/100)
+| 1      | Homework  | Hello    | ![](https://geps.dev/progress/100)
+| 1      | Homework  | Mario    | ![](https://geps.dev/progress/100)
+| 1      | Homework  | Cash    | ![](https://geps.dev/progress/100)
+| 2      | Lab  | Scrabble    | ![](https://geps.dev/progress/100)
+| 2      | Homework  | Readability    | ![](https://geps.dev/progress/100)
+| 2      | Homework  | Caesar    | ![](https://geps.dev/progress/93)
