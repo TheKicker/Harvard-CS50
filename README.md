@@ -61,6 +61,7 @@ Brian Yu - Senior Preceptor in Computer Science at Harvard University
 
 ## TheKicker's CS50 Gradebook
 
+<!-- https://github.com/gepser/markdown-progress -->
 | Week      | Type | Title | Grade|
 | ----------- | ----------- | ----------- | ------------- |
 | 0      | Homework  | Scratch    | ![](https://geps.dev/progress/100)
