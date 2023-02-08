@@ -1,1 +1,30 @@
 # Lecture 3 - Algorithms
+
+Remember, algorithms are just a list of instructions we go over repeatedly to solve a problem
+
+Computers can't see ALL of the data like a human can
+
+Array = [0,5,7,9,1,4,2,6,8,3]
+
+Humans can look at that and sort of visually see the numbers in order
+Computers have to go one item at a time
+
+Fortunately, we have all the building blocks we need to get it done 
+- conditionals
+- loops
+- etc 
+
+Big O takes the longest because every new input adds more time to solve
+Ө (N/2) is almost longest
+Ө (Log N) is completely independent of how much input there is
+
+Omega symbol is the lower bound of a runtime
+
+The numbers in the locker problem 
+
+Ө(n²)
+Ө(n log n)
+Ө(n)
+Ө(log n)
+Ө(1)
+

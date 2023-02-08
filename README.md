@@ -18,6 +18,8 @@ Problem sets - https://cs50.harvard.edu/x/2022/psets/
 
 CS50 Class page - https://cs50.me/cs50x
 
+CS50 C Manual Pages -  https://manual.cs50.io/
+
 me50/TheKicker - https://github.com/me50/TheKicker
 
 TheKicker/Harvard-CS50 - https://github.com/TheKicker/Harvard-CS50
@@ -71,3 +73,4 @@ Brian Yu - Senior Preceptor in Computer Science at Harvard University
 | 2      | Lab  | Scrabble    | ![](https://geps.dev/progress/100)
 | 2      | Homework  | Readability    | ![](https://geps.dev/progress/100)
 | 2      | Homework  | Caesar    | ![](https://geps.dev/progress/93)
+| 3      | Lab  | Sort    | ![](https://geps.dev/progress/100)
