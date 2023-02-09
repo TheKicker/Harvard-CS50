@@ -24,6 +24,8 @@ me50/TheKicker - https://github.com/me50/TheKicker
 
 TheKicker/Harvard-CS50 - https://github.com/TheKicker/Harvard-CS50
 
+Pixel Art - https://cs50.ly/art
+
 <hr>
 
 ## About 
