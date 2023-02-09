@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 // Max voters and candidates
 #define MAX_VOTERS 100
@@ -128,6 +129,17 @@ int main(int argc, string argv[])
 bool vote(int voter, int rank, string name)
 {
     // TODO
+    // check if candidate is a valid one
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (strcmp(name, candidates[i].name) == 0)
+        {
+            // record the rank
+            // return true
+            preferences[voter][rank] = i;
+            return true;
+        }
+    }
     return false;
 }
 
@@ -135,6 +147,21 @@ bool vote(int voter, int rank, string name)
 void tabulate(void)
 {
     // TODO
+    // loop through voters
+    for (int i = 0; i < voter_count; i++)
+    {
+        // loop through candidates
+        for (int j = 0; j < candidate_count; j++)
+        {
+            // check for eliminated candidates
+            if (candidates[preferences[i][j]].eliminated == false)
+            {
+                // tabluate
+                candidates[preferences[i][j]].votes += 1;
+                break;
+            }
+        }
+    }
     return;
 }
 
@@ -142,6 +169,18 @@ void tabulate(void)
 bool print_winner(void)
 {
     // TODO
+    // loop through candidates
+    for (int i = 0; i < candidate_count; i++)
+    {
+        string highest_count = candidates[i].name;
+        // get the highest voted candidate
+        if (candidates[i].votes > voter_count / 2)
+        {
+            // printfffffffff && return true dummy
+            printf("winner winner chicken dinner %s\n", highest_count);
+            return true;
+        }
+    }
     return false;
 }
 
@@ -149,19 +188,53 @@ bool print_winner(void)
 int find_min(void)
 {
     // TODO
-    return 0;
+    // minimum votes is equal to number of votes
+    int minvotes = voter_count;
+    // loop through the candidates
+    // I swear all i do is loop.  Loop here, loop there, loop through in my underwear LOL
+    // I need more coffee
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // less than not greater than dummy
+        if (candidates[i].eliminated == false && candidates[i].votes < minvotes)
+        {
+            minvotes = candidates[i].votes;
+        }
+    }
+    // return min votes instead of 0?
+    return minvotes;
 }
 
 // Return true if the election is tied between all candidates, false otherwise
 bool is_tie(int min)
 {
     // TODO
-    return false;
+    // loop again
+    // check if candidate was not elininated
+    // AND check if they have the minimum votes
+    // if the votes are equal its a tie, return true;
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].eliminated == false && candidates[i].votes != min)
+        {
+            return false;
+        }
+    }
+    return true;
 }
 
 // Eliminate the candidate (or candidates) in last place
 void eliminate(int min)
 {
     // TODO
+    // loop (yet) again
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if ( candidates[i].votes == min)
+        {
+            // You are the weakest link.... goodbye
+            candidates[i].eliminated = true;
+        }
+    }
     return;
 }
