@@ -2,7 +2,7 @@
 
 Presented by EdX - https://www.edx.org/course/introduction-computer-science-harvardx-cs50x
 
-CS50 Syllabus - https://cs50.harvard.edu/x/2022/
+CS50 Syllabus - https://cs50.harvard.edu/x/2023/
 
 Harvard University - https://www.harvard.edu/
 
@@ -14,7 +14,7 @@ Webpage 2 PDF - https://www.web2pdfconvert.com/
 
 Scratch - https://scratch.mit.edu/
 
-Problem sets - https://cs50.harvard.edu/x/2022/psets/
+Problem sets - https://cs50.harvard.edu/x/2023/psets/
 
 CS50 Class page - https://cs50.me/cs50x
 
@@ -30,7 +30,7 @@ Pixel Art - https://cs50.ly/art
 
 ## About 
 
-This is CS50x , Harvard University's introduction to the intellectual enterprises of computer science and the art of programming for majors and non-majors alike, with or without prior programming experience. An entry-level course taught by David J. Malan, CS50x teaches students how to think algorithmically and solve problems efficiently. Topics include abstraction, algorithms, data structures, encapsulation, resource management, security, software engineering, and web development. Languages include C, Python, SQL, and JavaScript plus CSS and HTML. Problem sets inspired by real-world domains of biology, cryptography, finance, forensics, and gaming. The on-campus version of CS50x , CS50, is Harvard's largest course.
+This is CS50x, Harvard University's introduction to the intellectual enterprises of computer science and the art of programming for majors and non-majors alike, with or without prior programming experience. An entry-level course taught by David J. Malan, CS50x teaches students how to think algorithmically and solve problems efficiently. Topics include abstraction, algorithms, data structures, encapsulation, resource management, security, software engineering, and web development. Languages include C, Python, SQL, and JavaScript plus CSS and HTML. Problem sets inspired by real-world domains of biology, cryptography, finance, forensics, and gaming. The on-campus version of CS50x , CS50, is Harvard's largest course.
 
 Students who earn a satisfactory score on 9 problem sets (i.e., programming assignments) and a final project are eligible for a certificate. This is a self-paced course–you may take CS50x on your own schedule.
 
