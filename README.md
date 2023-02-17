@@ -78,5 +78,6 @@ Brian Yu - Senior Preceptor in Computer Science at Harvard University
 | 3      | Lab  | Sort    | ![](https://geps.dev/progress/100)
 | 3      | Homework  | Plurality    | ![](https://geps.dev/progress/100)
 | 3      | Homework  | Runoff    | ![](https://geps.dev/progress/100)
-| 4      | Lab  |      | ![](https://geps.dev/progress/0)
-| 4      | Homework  |      | ![](https://geps.dev/progress/0)
+| 4      | Lab  | WAV     | ![](https://geps.dev/progress/100)
+| 4      | Homework  | Filter-less      | ![](https://geps.dev/progress/86)
+| 4      | Homework  | Recover      | ![](https://geps.dev/progress/100)
