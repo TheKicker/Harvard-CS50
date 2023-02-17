@@ -36,7 +36,7 @@ int main(int argc, char *argv[])
     // read the memory card until the end
     while (fread(buffer, sizeof(BYTE) * 512, 1, file_pointer) == 1) // thanks tabnine
     {
-        printf("Start yerrrrrr engines");
+        // printf("Start yerrrrrr engines");
         // check if a JPEG has been found
         if (buffer[0] == 0xFF && buffer[1] == 0xD8 && buffer[2] == 0xFF && (buffer[3] & 0xF0) == 0xE0)
         {
@@ -48,7 +48,8 @@ int main(int argc, char *argv[])
 
             // sprintf stands for string print
             // sprintf (char *str, const char *format, ...)
-            sprintf(file_name, "card-%03d.jpg", total_images++); // i trusted you tabnine
+            sprintf(file_name, "%03d.jpg", total_images++); // i trusted you tabnine
+            // sprintf(file_name, "card-%03d.jpg", total_images++); 
             // write the file
             output_file_pointer = fopen(file_name, "w"); // thanks tabnine
         }
