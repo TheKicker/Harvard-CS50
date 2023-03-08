@@ -1,0 +1,21 @@
+Times:
+
+10 simulations: 0m0.027s
+100 simulations: 0m0.028s
+1000 simulations: 0m0.035s
+10000 simulations: 0m0.100s
+100000 simulations: 0m0.762s
+1000000 simulations: 0m7.812s
+
+Questions:
+
+Which predictions, if any, proved incorrect as you increased the number of simulations?:
+
+I don't know that any predictions proved incorrect, but I was surprised at the minor variations with the spread.  More simulations meant more teams could potentially win and were added to the probabilities.
+
+Suppose you're charged a fee for each second of compute time your program uses.
+After how many simulations would you call the predictions "good enough"?:
+
+Personally, I think the 100,000 because it only ran for 0.762 of a second, meaning we could run it 4 times and get roughly 3 seconds out of it with enough variance I would be comfortable with.
+
+I'm honestly just so glad we're on Python.  It was the first language I started with and I missed it, especially in contrast to a language like C.
