@@ -1,0 +1,27 @@
+# Python and SQL 
+
+Create a database using SQLITE3
+sqlite3 favorites.db 
+
+.mode [desired mode]
+.mode csv
+This lets sqlite3 know that we're using a csv file
+
+.import [file] [what you want to call it]
+.import favorite.csv favorites
+This lets sqlite3 use the existing file and it's headers (lets us skip a few steps for now)
+
+.schema 
+This lets us see what just happened, view the layout of the db
+
+SELECT [column/columns] FROM [destination];
+This pulls information from our file or wherever we are looking (SQL uses capitals convention)
+
+SELECT * FROM favorites;
+Pulls every line from our CSV file turned into a db
+
+* are a wild card character for all
+
+Be careful about what query you type in, and what it requires
+
+ALWAYS ALWAYS BACK UP YOUR database
