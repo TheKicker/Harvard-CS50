@@ -1,0 +1,402 @@
+-- Keep a log of any SQL queries you execute as you solve the mystery.
+--
+--  Stolen Duck on Humphrey Street on July 28, 2021 at 10:15am
+--  The robber was on Leggett Street earlier in the day withdrawing money
+--  The thief called someone, asked them to book a flight on the 29th
+--  The thief left within 10 minutes of the robbery
+--
+-- Get an idea of the layout of the database
+.schema
+
+-- Checkout the crime scene reports on our location
+SELECT * FROM crime_scene_reports WHERE street = "Humphrey Street";
+-- OUTPUT
+-- ID / YEAR / MONTH / DAY / DESCRIPTION
+-- 295 2021 7 27 Humphrey Street Theft of the CS50 duck took place at 10:15am at the Humphrey Street bakery. Interviews were conducted today with three witnesses who were present at the time – each of their interview transcripts mentions the bakery.
+
+-- Let's copy the bakery_security_logs as our starting point, ignoring all after 11 am
+CREATE TABLE suspects AS SELECT * FROM bakery_security_logs WHERE hour < 11;
+
+-- Let's add names and passport numbers to match the license plates
+-- Create a temporary table to store the matched data
+CREATE TEMP TABLE temp_matches AS SELECT s.*, p.name, p.passport_number FROM suspects AS s JOIN people AS p ON s.license_plate = p.license_plate;
+-- Delete the original "suspects" table
+DROP TABLE IF EXISTS suspects;
+-- Rename the temporary table to "suspects"
+ALTER TABLE temp_matches RENAME TO suspects;
+-- Remove non 28th of July Days
+DELETE FROM suspects WHERE day <> 28;
+-- Remove all people who left prior to 10am
+DELETE FROM suspects WHERE activity = "exit" AND hour < 10;
+DELETE FROM suspects WHERE activity = "entrance" AND hour >= 10 AND minute > 20;
+-- OUTPUT
+-- +-----+------+-------+-----+------+--------+----------+---------------+---------+-----------------+
+-- | id  | year | month | day | hour | minute | activity | license_plate |  name   | passport_number |
+-- +-----+------+-------+-----+------+--------+----------+---------------+---------+-----------------+
+-- | 219 | 2021 | 7     | 28  | 8    | 2      | entrance | 1M92998       | Alice   | 1679711307      |
+-- | 220 | 2021 | 7     | 28  | 8    | 2      | entrance | N507616       | Peter   | 9224308981      |
+-- | 223 | 2021 | 7     | 28  | 8    | 7      | entrance | 7Z8B130       | Rachel  |                 |
+-- | 225 | 2021 | 7     | 28  | 8    | 13     | entrance | 47MEFVA       | Debra   | 2750542732      |
+-- | 227 | 2021 | 7     | 28  | 8    | 15     | entrance | D965M59       | Wayne   |                 |
+-- | 228 | 2021 | 7     | 28  | 8    | 15     | entrance | HW0488P       | Jordan  | 7951366683      |
+-- | 231 | 2021 | 7     | 28  | 8    | 18     | entrance | L93JTIZ       | Iman    | 7049073643      |
+-- | 232 | 2021 | 7     | 28  | 8    | 23     | entrance | 94KL13X       | Bruce   | 5773159633      |
+-- | 233 | 2021 | 7     | 28  | 8    | 25     | entrance | L68E5I0       | George  | 4977790793      |
+-- | 234 | 2021 | 7     | 28  | 8    | 25     | entrance | HOD8639       | Michael | 6117294637      |
+-- | 237 | 2021 | 7     | 28  | 8    | 34     | entrance | 1106N58       | Taylor  | 1988161715      |
+-- | 238 | 2021 | 7     | 28  | 8    | 34     | entrance | W2CT78U       | Andrew  |                 |
+-- | 240 | 2021 | 7     | 28  | 8    | 36     | entrance | 322W7JE       | Diana   | 3592750733      |
+-- | 241 | 2021 | 7     | 28  | 8    | 38     | entrance | 3933NUH       | Ralph   | 6464352048      |
+-- | 243 | 2021 | 7     | 28  | 8    | 42     | entrance | 0NTHK55       | Kelsey  | 8294398571      |
+-- | 244 | 2021 | 7     | 28  | 8    | 44     | entrance | 1FBL6TH       | Joshua  | 3761239013      |
+-- | 246 | 2021 | 7     | 28  | 8    | 49     | entrance | P14PE2Q       | Carolyn | 3925120216      |
+-- | 248 | 2021 | 7     | 28  | 8    | 50     | entrance | 4V16VO0       | Robin   |                 |
+-- | 250 | 2021 | 7     | 28  | 8    | 57     | entrance | 8LLB02B       | Donna   |                 |
+-- | 252 | 2021 | 7     | 28  | 8    | 59     | entrance | O784M2U       | Martha  |                 |
+-- | 254 | 2021 | 7     | 28  | 9    | 14     | entrance | 4328GD8       | Luca    | 8496433585      |
+-- | 255 | 2021 | 7     | 28  | 9    | 15     | entrance | 5P2BI95       | Vanessa | 2963008352      |
+-- | 256 | 2021 | 7     | 28  | 9    | 20     | entrance | 6P58WS2       | Barry   | 7526138472      |
+-- | 257 | 2021 | 7     | 28  | 9    | 28     | entrance | G412CB7       | Sofia   | 1695452385      |
+-- | 258 | 2021 | 7     | 28  | 10   | 8      | entrance | R3G7486       | Brandon | 7874488539      |
+-- | 259 | 2021 | 7     | 28  | 10   | 14     | entrance | 13FNH73       | Sophia  | 3642612721      |
+-- | 260 | 2021 | 7     | 28  | 10   | 16     | exit     | 5P2BI95       | Vanessa | 2963008352      |
+-- | 261 | 2021 | 7     | 28  | 10   | 18     | exit     | 94KL13X       | Bruce   | 5773159633      |
+-- | 262 | 2021 | 7     | 28  | 10   | 18     | exit     | 6P58WS2       | Barry   | 7526138472      |
+-- | 263 | 2021 | 7     | 28  | 10   | 19     | exit     | 4328GD8       | Luca    | 8496433585      |
+-- | 264 | 2021 | 7     | 28  | 10   | 20     | exit     | G412CB7       | Sofia   | 1695452385      |
+-- | 265 | 2021 | 7     | 28  | 10   | 21     | exit     | L93JTIZ       | Iman    | 7049073643      |
+-- | 266 | 2021 | 7     | 28  | 10   | 23     | exit     | 322W7JE       | Diana   | 3592750733      |
+-- | 267 | 2021 | 7     | 28  | 10   | 23     | exit     | 0NTHK55       | Kelsey  | 8294398571      |
+-- | 268 | 2021 | 7     | 28  | 10   | 35     | exit     | 1106N58       | Taylor  | 1988161715      |
+-- +-----+------+-------+-----+------+--------+----------+---------------+---------+-----------------+
+
+-- Create a new table that lists all people from the bakery and their flights on July 28th 2021
+-- Create the "suspects_flights" table
+CREATE TABLE suspects_flights (
+    suspect_id INTEGER,
+    suspect_name TEXT,
+    suspect_passport INTEGER,
+    flight_id INTEGER,
+    origin_airport TEXT,
+    destination_airport TEXT
+);
+
+-- Insert data into the "suspects_flights" table using the previous query
+INSERT INTO suspects_flights
+SELECT
+    s.id AS suspect_id,
+    s.name AS suspect_name,
+    s.passport_number AS suspect_passport,
+    f.id AS flight_id,
+    a_origin.full_name AS origin_airport,
+    a_dest.full_name AS destination_airport
+FROM
+    temp.suspects AS s
+LEFT JOIN
+    passengers AS p ON s.passport_number = p.passport_number
+LEFT JOIN
+    flights AS f ON p.flight_id = f.id
+LEFT JOIN
+    airports AS a_origin ON f.origin_airport_id = a_origin.id
+LEFT JOIN
+    airports AS a_dest ON f.destination_airport_id = a_dest.id
+WHERE
+    f.year = 2021
+    AND f.month = 7
+    AND f.day = 28;
+-- OUTPUT
+-- +------------+--------------+------------------+-----------+-----------------------------------+-----------------------------------------+
+-- | suspect_id | suspect_name | suspect_passport | flight_id |          origin_airport           |           destination_airport           |
+-- +------------+--------------+------------------+-----------+-----------------------------------+-----------------------------------------+
+-- | 225        | Debra        | 2750542732       | 4         | O'Hare International Airport      | Fiftyville Regional Airport             |
+-- | 225        | Debra        | 2750542732       | 41        | Los Angeles International Airport | Fiftyville Regional Airport             |
+-- | 233        | George       | 4977790793       | 40        | Dubai International Airport       | Fiftyville Regional Airport             |
+-- | 255        | Vanessa      | 2963008352       | 20        | Logan International Airport       | Fiftyville Regional Airport             |
+-- | 259        | Sophia       | 3642612721       | 6         | Fiftyville Regional Airport       | Dallas/Fort Worth International Airport |
+-- | 260        | Vanessa      | 2963008352       | 20        | Logan International Airport       | Fiftyville Regional Airport             |
+-- +------------+--------------+------------------+-----------+-----------------------------------+-----------------------------------------+
+
+-- Sophia is looking suspect, let's check her out
+SELECT * FROM people WHERE name = 'Sophia';
+-- OUTPUT
+-- +--------+--------+----------------+-----------------+---------------+
+-- |   id   |  name  |  phone_number  | passport_number | license_plate |
+-- +--------+--------+----------------+-----------------+---------------+
+-- | 745650 | Sophia | (027) 555-1068 | 3642612721      | 13FNH73       |
+-- +--------+--------+----------------+-----------------+---------------+
+SELECT * FROM phone_calls WHERE caller = "(027) 555-1068" OR receiver = "(027) 555-1068";
+-- OUTPUT
+-- +-----+----------------+----------------+------+-------+-----+----------+
+-- | id  |     caller     |    receiver    | year | month | day | duration |
+-- +-----+----------------+----------------+------+-------+-----+----------+
+-- | 41  | (027) 555-1068 | (594) 555-6254 | 2021 | 7     | 25  | 582      |
+-- | 117 | (505) 555-5698 | (027) 555-1068 | 2021 | 7     | 26  | 35       |
+-- | 183 | (994) 555-3373 | (027) 555-1068 | 2021 | 7     | 27  | 194      |
+-- | 192 | (027) 555-1068 | (375) 555-8161 | 2021 | 7     | 27  | 71       |
+-- | 471 | (027) 555-1068 | (717) 555-1342 | 2021 | 7     | 31  | 567      |
+-- +-----+----------------+----------------+------+-------+-----+----------+
+SELECT * FROM bank_accounts WHERE person_id = "745650";
+-- OUTPUT
+-- +----------------+-----------+---------------+
+-- | account_number | person_id | creation_year |
+-- +----------------+-----------+---------------+
+-- | 42445987       | 745650    | 2011          |
+-- +----------------+-----------+---------------+
+SELECT * FROM atm_transactions WHERE account_number = "42445987";
+-- +------+----------------+------+-------+-----+----------------------+------------------+--------+
+-- |  id  | account_number | year | month | day |     atm_location     | transaction_type | amount |
+-- +------+----------------+------+-------+-----+----------------------+------------------+--------+
+-- | 93   | 42445987       | 2021 | 7     | 26  | Carvalho Road        | deposit          | 75     |
+-- | 553  | 42445987       | 2021 | 7     | 29  | Humphrey Lane        | deposit          | 100    |
+-- | 561  | 42445987       | 2021 | 7     | 29  | Carvalho Road        | withdraw         | 65     |
+-- | 811  | 42445987       | 2021 | 7     | 30  | Daboin Sanchez Drive | withdraw         | 80     |
+-- | 842  | 42445987       | 2021 | 7     | 31  | Leggett Street       | deposit          | 55     |
+-- | 865  | 42445987       | 2021 | 7     | 31  | Humphrey Lane        | withdraw         | 75     |
+-- | 1279 | 42445987       | 2021 | 8     | 1   | Daboin Sanchez Drive | withdraw         | 55     |
+-- | 1329 | 42445987       | 2021 | 8     | 1   | Blumberg Boulevard   | withdraw         | 80     |
+-- +------+----------------+------+-------+-----+----------------------+------------------+--------+
+
+-- People who were in the Bakery on July 28th 2021 AND had a flight the same day
+SELECT DISTINCT
+    p.name AS person_name,
+    a_origin.full_name AS origin_airport,
+    a_dest.full_name AS destination_airport
+FROM
+    bakery_security_logs AS b
+INNER JOIN
+    people AS p ON b.license_plate = p.license_plate
+INNER JOIN
+    flights AS f ON b.year = f.year AND b.month = f.month AND b.day = f.day
+INNER JOIN
+    passengers AS ps ON f.id = ps.flight_id
+INNER JOIN
+    airports AS a_origin ON f.origin_airport_id = a_origin.id
+INNER JOIN
+    airports AS a_dest ON f.destination_airport_id = a_dest.id
+WHERE
+    b.month = 7
+    AND b.day = 28
+    AND ps.passport_number = p.passport_number;
+-- OUTPUT
+-- +-------------+-----------------------------------------+-----------------------------------------+
+-- | person_name |             origin_airport              |           destination_airport           |
+-- +-------------+-----------------------------------------+-----------------------------------------+
+-- | Debra       | O'Hare International Airport            | Fiftyville Regional Airport             |
+-- | Jeremy      | O'Hare International Airport            | Fiftyville Regional Airport             |
+-- | Amanda      | Fiftyville Regional Airport             | Dallas/Fort Worth International Airport |
+-- | Daniel      | Fiftyville Regional Airport             | Dallas/Fort Worth International Airport |
+-- | Sophia      | Fiftyville Regional Airport             | Dallas/Fort Worth International Airport |
+-- | John        | Fiftyville Regional Airport             | LaGuardia Airport                       |
+-- | John        | Beijing Capital International Airport   | Fiftyville Regional Airport             |
+-- | Vanessa     | Logan International Airport             | Fiftyville Regional Airport             |
+-- | Thomas      | Logan International Airport             | Fiftyville Regional Airport             |
+-- | Jeremy      | Dallas/Fort Worth International Airport | Fiftyville Regional Airport             |
+-- | Judith      | Fiftyville Regional Airport             | LaGuardia Airport                       |
+-- | George      | Dubai International Airport             | Fiftyville Regional Airport             |
+-- | Debra       | Los Angeles International Airport       | Fiftyville Regional Airport             |
+-- | Jeremy      | Los Angeles International Airport       | Fiftyville Regional Airport             |
+-- +-------------+-----------------------------------------+-----------------------------------------+
+
+-- Jeremy is looking suspect, let's check him out
+SELECT * FROM people WHERE name = 'Jeremy';
+-- OUTPUT
+-- +--------+--------+----------------+-----------------+---------------+
+-- |   id   |  name  |  phone_number  | passport_number | license_plate |
+-- +--------+--------+----------------+-----------------+---------------+
+-- | 748674 | Jeremy | (194) 555-5027 | 1207566299      | V47T75I       |
+-- +--------+--------+----------------+-----------------+---------------+
+
+-- Vanessa is looking suspect, let's check her out
+SELECT * FROM people WHERE name = 'Vanessa';
+-- OUTPUT
+-- +--------+---------+----------------+-----------------+---------------+
+-- |   id   |  name   |  phone_number  | passport_number | license_plate |
+-- +--------+---------+----------------+-----------------+---------------+
+-- | 221103 | Vanessa | (725) 555-4692 | 2963008352      | 5P2BI95       |
+-- +--------+---------+----------------+-----------------+---------------+
+
+SELECT * FROM interviews WHERE month >= "7" AND day >= "28";
+-- OUTPUT
+-- +-----+---------+------+-------+-----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+-- | id  |  name   | year | month | day |                                                                                                                                                     transcript                                                                                                                                                      |
+-- +-----+---------+------+-------+-----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+-- | 158 | Jose    | 2021 | 7     | 28  | “Ah,” said he, “I forgot that I had not seen you for some weeks. It is a little souvenir from the King of Bohemia in return for my assistance in the case of the Irene Adler papers.”                                                                                                                               |
+-- | 159 | Eugene  | 2021 | 7     | 28  | “I suppose,” said Holmes, “that when Mr. Windibank came back from France he was very annoyed at your having gone to the ball.”                                                                                                                                                                                      |
+-- | 160 | Barbara | 2021 | 7     | 28  | “You had my note?” he asked with a deep harsh voice and a strongly marked German accent. “I told you that I would call.” He looked from one to the other of us, as if uncertain which to address.                                                                                                                   |
+-- | 161 | Ruth    | 2021 | 7     | 28  | Sometime within ten minutes of the theft, I saw the thief get into a car in the bakery parking lot and drive away. If you have security footage from the bakery parking lot, you might want to look for cars that left the parking lot in that time frame.                                                          |
+-- | 162 | Eugene  | 2021 | 7     | 28  | I don't know the thief's name, but it was someone I recognized. Earlier this morning, before I arrived at Emma's bakery, I was walking by the ATM on Leggett Street and saw the thief there withdrawing some money.                                                                                                 |
+-- | 163 | Raymond | 2021 | 7     | 28  | As the thief was leaving the bakery, they called someone who talked to them for less than a minute. In the call, I heard the thief say that they were planning to take the earliest flight out of Fiftyville tomorrow. The thief then asked the person on the other end of the phone to purchase the flight ticket. |
+-- | 191 | Lily    | 2021 | 7     | 28  | Our neighboring courthouse has a very annoying rooster that crows loudly at 6am every day. My sons Robert and Patrick took the rooster to a city far, far away, so it may never bother us again. My sons have successfully arrived in Paris.                                                                        |
+-- +-----+---------+------+-------+-----+---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------+
+
+-- Let's get all ATM Transaction on Leggett Street Prior to the robbery
+SELECT a.*, b.account_number AS bank_account_number, p.name AS account_holder_name FROM atm_transactions AS a INNER JOIN bank_accounts AS b ON a.account_number = b.account_number INNER JOIN people AS p ON b.person_id = p.id WHERE a.month = 7 AND a.day = 28 AND a.atm_location = 'Leggett Street';
+ -- OUTPUT
+-- +-----+----------------+------+-------+-----+----------------+------------------+--------+---------------------+---------------------+
+-- | id  | account_number | year | month | day |  atm_location  | transaction_type | amount | bank_account_number | account_holder_name |
+-- +-----+----------------+------+-------+-----+----------------+------------------+--------+---------------------+---------------------+
+-- | 267 | 49610011       | 2021 | 7     | 28  | Leggett Street | withdraw         | 50     | 49610011            | Bruce               |
+-- | 275 | 86363979       | 2021 | 7     | 28  | Leggett Street | deposit          | 10     | 86363979            | Kaelyn              |
+-- | 336 | 26013199       | 2021 | 7     | 28  | Leggett Street | withdraw         | 35     | 26013199            | Diana               |
+-- | 269 | 16153065       | 2021 | 7     | 28  | Leggett Street | withdraw         | 80     | 16153065            | Brooke              |
+-- | 264 | 28296815       | 2021 | 7     | 28  | Leggett Street | withdraw         | 20     | 28296815            | Kenny               |
+-- | 288 | 25506511       | 2021 | 7     | 28  | Leggett Street | withdraw         | 20     | 25506511            | Iman                |
+-- | 246 | 28500762       | 2021 | 7     | 28  | Leggett Street | withdraw         | 48     | 28500762            | Luca                |
+-- | 266 | 76054385       | 2021 | 7     | 28  | Leggett Street | withdraw         | 60     | 76054385            | Taylor              |
+-- | 313 | 81061156       | 2021 | 7     | 28  | Leggett Street | withdraw         | 30     | 81061156            | Benista             |
+-- +-----+----------------+------+-------+-----+----------------+------------------+--------+---------------------+---------------------+
+
+-- Lookup everyone who had a flight on the 29th who was in the bakery on the 28th
+SELECT DISTINCT p.name
+FROM flights AS f
+INNER JOIN passengers AS ps ON f.id = ps.flight_id
+INNER JOIN people AS p ON ps.passport_number = p.passport_number
+INNER JOIN bakery_security_logs AS bakery ON p.license_plate = bakery.license_plate
+WHERE
+    f.year = 2021
+    AND f.month = 7
+    AND f.day = 29
+    AND bakery.year = 2021
+    AND bakery.month = 7
+    AND bakery.day = 28;
+-- OUTPUT
+-- +---------+
+-- |  name   |
+-- +---------+
+-- | Jordan  |
+-- | Bruce   |
+-- | Michael |
+-- | Taylor  |
+-- | Diana   |
+-- | Kelsey  |
+-- | Luca    |
+-- | Sofia   |
+-- | Brandon |
+-- | Sophia  |
+-- | Thomas  |
+-- | Daniel  |
+-- | John    |
+-- | Ethan   |
+-- +---------+
+
+-- MASTER SUSPECT LIST AS OF RIGHT NOW --
+-- +---------+
+-- | Bruce   |
+-- | Diana   |
+-- | Luca    |
+-- +---------+
+
+-- Let's get info on each of our suspects
+SELECT
+    p.phone_number AS phone_number,
+    ba.account_number AS bank_account_number,
+    p.passport_number AS passport_number,
+    p.license_plate AS license_plate
+FROM
+    people AS p
+LEFT JOIN
+    bank_accounts AS ba ON p.id = ba.person_id
+WHERE
+    p.name = 'Luca';
+-- OUTPUT
+-- +----------------+---------------------+-----------------+---------------+---------------+
+-- |  phone_number  | bank_account_number | passport_number | license_plate | name          |
+-- +----------------+---------------------+-----------------+---------------+---------------|
+-- | (367) 555-5533 | 49610011            | 5773159633      | 94KL13X       | Bruce         |
+-- +----------------+---------------------+-----------------+---------------+---------------+
+-- | (770) 555-1861 | 26013199            | 3592750733      | 322W7JE       | Diana        |
+-- +----------------+---------------------+-----------------+---------------+---------------+
+-- | (389) 555-5198 | 28500762            | 8496433585      | 4328GD8       | Luca          |
+-- +----------------+---------------------+-----------------+---------------+---------------+
+
+SELECT * FROM phone_calls WHERE caller = "(367) 555-5533" AND day = 28;
+-- OUTPUT Bruce's calls
+-- +-----+----------------+----------------+------+-------+-----+----------+
+-- | id  |     caller     |    receiver    | year | month | day | duration |
+-- +-----+----------------+----------------+------+-------+-----+----------+
+-- | 233 | (367) 555-5533 | (375) 555-8161 | 2021 | 7     | 28  | 45       |
+-- | 236 | (367) 555-5533 | (344) 555-9601 | 2021 | 7     | 28  | 120      |
+-- | 245 | (367) 555-5533 | (022) 555-4052 | 2021 | 7     | 28  | 241      |
+-- | 285 | (367) 555-5533 | (704) 555-5790 | 2021 | 7     | 28  | 75       |
+-- +-----+----------------+----------------+------+-------+-----+----------+
+
+SELECT * FROM phone_calls WHERE caller = "(770) 555-1861" AND day = 28;
+-- OUTPUT Diana's calls
+-- +-----+----------------+----------------+------+-------+-----+----------+
+-- | id  |     caller     |    receiver    | year | month | day | duration |
+-- +-----+----------------+----------------+------+-------+-----+----------+
+-- | 255 | (770) 555-1861 | (725) 555-3243 | 2021 | 7     | 28  | 49       |
+-- +-----+----------------+----------------+------+-------+-----+----------+
+
+SELECT * FROM phone_calls WHERE caller = "(389) 555-5198" AND day = 28;
+-- OUTPUT Luca's calls
+-- LUCA IS FREE
+
+-- MASTER SUSPECT LIST AS OF RIGHT NOW --
+-- +---------+
+-- | Bruce   |
+-- | Diana   |
+-- +---------+
+
+SELECT * FROM people WHERE phone_number = "(375) 555-8161";
+-- OUTPUT Bruce's friend
+-- +--------+-------+----------------+-----------------+---------------+
+-- |   id   | name  |  phone_number  | passport_number | license_plate | account_number
+-- +--------+-------+----------------+-----------------+---------------+
+-- | 864400 | Robin | (375) 555-8161 |                 | 4V16VO0       | 94751264
+-- +--------+-------+----------------+-----------------+---------------+
+
+SELECT * FROM people WHERE phone_number = "(725) 555-3243";
+-- OUTPUT Diana's friend
+-- +--------+--------+----------------+-----------------+---------------+
+-- |   id   |  name  |  phone_number  | passport_number | license_plate | account_number
+-- +--------+--------+----------------+-----------------+---------------+
+-- | 847116 | Philip | (725) 555-3243 | 3391710505      | GW362R6       | 47746428
+-- +--------+--------+----------------+-----------------+---------------+
+
+SELECT * FROM bank_accounts WHERE person_id = 864400;
+SELECT * FROM bank_accounts WHERE person_id = 847116;
+-- OUTPUT Robin and Phillip's account numbers
+
+SELECT * FROM flights WHERE month = 7 AND day = 29;
+-- OUTPUT Flights on July 29th 2021
+-- +----+-------------------+------------------------+------+-------+-----+------+--------+
+-- | id | origin_airport_id | destination_airport_id | year | month | day | hour | minute |
+-- +----+-------------------+------------------------+------+-------+-----+------+--------+
+-- | 18 | 8                 | 6                      | 2021 | 7     | 29  | 16   | 0      |
+-- | 23 | 8                 | 11                     | 2021 | 7     | 29  | 12   | 15     |
+-- | 36 | 8                 | 4                      | 2021 | 7     | 29  | 8    | 20     |
+-- | 43 | 8                 | 1                      | 2021 | 7     | 29  | 9    | 30     |
+-- | 53 | 8                 | 9                      | 2021 | 7     | 29  | 15   | 20     |
+-- +----+-------------------+------------------------+------+-------+-----+------+--------+
+
+SELECT * FROM flights WHERE id = 36;
+-- +----+-------------------+------------------------+------+-------+-----+------+--------+
+-- | id | origin_airport_id | destination_airport_id | year | month | day | hour | minute |
+-- +----+-------------------+------------------------+------+-------+-----+------+--------+
+-- | 36 | 8                 | 4                      | 2021 | 7     | 29  | 8    | 20     |
+-- +----+-------------------+------------------------+------+-------+-----+------+--------+
+
+SELECT * FROM passengers WHERE flight_id = 36;
+-- OUTPUT First Flight's Passenger List
+-- +-----------+-----------------+------+
+-- | flight_id | passport_number | seat |
+-- +-----------+-----------------+------+
+-- | 36        | 7214083635      | 2A   |
+-- | 36        | 1695452385      | 3B   |
+-- | 36        | 5773159633      | 4A   |
+-- | 36        | 1540955065      | 5C   |
+-- | 36        | 8294398571      | 6C   |
+-- | 36        | 1988161715      | 6D   |
+-- | 36        | 9878712108      | 7A   |
+-- | 36        | 8496433585      | 7B   |
+-- +-----------+-----------------+------+
+
+-- BRUCE WAS ON THE PLANE YA'LL IN SEAT 4A
+
+SELECT * FROM airports WHERE id = 4;
+-- +----+--------------+-------------------+---------------+
+-- | id | abbreviation |     full_name     |     city      |
+-- +----+--------------+-------------------+---------------+
+-- | 4  | LGA          | LaGuardia Airport | New York City |
+-- +----+--------------+-------------------+---------------+
