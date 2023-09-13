@@ -1,0 +1,52 @@
+footer{
+    background: black;
+    text-align: center;
+    padding: 5rem 0;
+    color: white;
+}
+.submitButton{
+    background: green;
+    color: white;
+    max-width: 200px;
+    margin: auto;
+}
+.foo{
+    display: flex;
+    flex-direction: row;
+}
+.bar1{
+    width:50%;
+    background: #44CBF0;
+    height: 250px;
+}
+.bar2{
+    width:50%;
+    background: black;
+    color: white;
+    height: 250px;
+}
+.flip-horizontal-bottom {
+	-webkit-animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+	        animation: flip-horizontal-bottom 0.4s cubic-bezier(0.455, 0.030, 0.515, 0.955) both;
+}
+ @-webkit-keyframes flip-horizontal-bottom {
+    0% {
+      -webkit-transform: rotateX(0);
+              transform: rotateX(0);
+    }
+    100% {
+      -webkit-transform: rotateX(-180deg);
+              transform: rotateX(-180deg);
+    }
+  }
+  @keyframes flip-horizontal-bottom {
+    0% {
+      -webkit-transform: rotateX(0);
+              transform: rotateX(0);
+    }
+    100% {
+      -webkit-transform: rotateX(-180deg);
+              transform: rotateX(-180deg);
+    }
+  }
+  
