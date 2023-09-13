@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            function correctAnswer (){
+                const kanyeButton = document.getElementById("kanyeButton");
+                kanyeButton.style.background = "green"
+                const albumRight = document.getElementById("albumRight");
+                albumRight.style.visibility = "visible"
+            }
+            function wrongAnswer (id){
+                const button = document.getElementById(id);
+                button.style.background = "red"
+                const albumWrong = document.getElementById("albumWrong");
+                albumWrong.style.visibility = "visible"
+            }
+            function captureInput(){
+                const inputText = document.getElementById("inputText");
+                const countryWrong = document.getElementById("countryWrong");
+                const countryRight = document.getElementById("countryRight");
+                if(inputText.value === "USA"){
+                    inputText.style.background = "green";
+                    countryRight.style.visibility = "visible";
+                    countryWrong.style.visibility = "hidden";
+                } else {
+                    inputText.style.background = "red";
+                    countryWrong.style.visibility = "visible";
+                    countryRight.style.visibility = "hidden";
+                }
+            }
+
+        </script>
+    </head>
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>What album is better?</h3>
+                <p id="albumWrong" style="visibility: hidden;">Incorrect</p>
+                <p id="albumRight" style="visibility: hidden;">Correct!</p>
+                <button type="button" id="kanyeButton" onclick="correctAnswer()">Kanye's "Donda"</button>
+                <button type="button" id="drakeButton" onclick="wrongAnswer('drakeButton')">Drake's "Scorpion"</button>
+                <button type="button" id="dojaButton" onclick="wrongAnswer('dojaButton')">Doja Cat's "Scarlet"</button>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>What is the greatest country on Earth?</h3>
+                <p id="countryWrong" style="visibility: hidden;">Incorrect</p>
+                <p id="countryRight" style="visibility: hidden;">Correct!</p>
+                <input type="text" placeholder="USA, MEX, RUS, FRA, etc." id="inputText">
+                <button onclick="captureInput()">Submit</button>
+            </div>
+        </div>
+    </body>
+</html>

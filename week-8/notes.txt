@@ -1,1 +1,53 @@
 # HTML CSS JAVASCRIPT
+
+TCP/IP
+Transmission Control Protocol / Internet Protocol 
+
+IPv4 address's are 32 bits in total
+#.#.#.#
+255.255.255.255 = 4 billion (roughly)
+
+IPv6 are 128 bits in total 
+
+TCP is helps our computers with context of messages
+
+DNS (Domain Name System)
+Collection of servers who's entire lives are dedicated to convert web addresses to IP addresses
+
+HTTP/HTTPS
+Hyper Text Transfer Protocol 
+https://www.example.com
+https://www.example.com/path
+https://www.example.com/games/siege.html 
+
+Chrome DevTools (or other browsers) let us see all of the information contained in the headers
+
+We can also do it with CURL in our terminal window
+CURL - Connect URL 
+
+~/ curl -I https://www.geneva.edu
+
+HTTP/2 200
+date: Tue, 12 Sep 2023 14:16:20 GMT
+server: Apache/2.4.37 (Red Hat Enterprise Linux) OpenSSL/1.1.1k PHP/7.4.30
+strict-transport-security: max-age=63072000
+x-powered-by: PHP/7.4.30
+vary: User-Agent
+content-type: text/html; charset=UTF-8
+
+HTTP Status Codes
+404 - Not Found
+403 - Forbidden (You need to log in)
+301 - Moved Permanently 
+307 - Moved Temporarily
+200 - Okay 
+418 - I am a teapot
+500 - Internal Server Error
+503 - Service Unavailable (Overloaded server)
+
+HTML - Hyper Text Markup Language
+Like a tree
+
+CSS - Cascading Style Sheets
+
+JS - Javascript
