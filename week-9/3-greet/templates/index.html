@@ -8,6 +8,9 @@
     </head>
     <body>
         <h1>Hello World, Hello CS50</h1>
-        <a href="/">Index</a> | <a href="about.html">About</a>
+        <form action="/greet" method="get">
+            <input autocomplete="off" autofocus type="text" name="name" placeholder="Enter your name">
+            <input type="submit" value="Greet">
+        </form>
     </body>
 </html>
