@@ -2,7 +2,9 @@
 
 Presented by EdX - https://www.edx.org/course/introduction-computer-science-harvardx-cs50x
 
-CS50 Syllabus - https://cs50.harvard.edu/x/2023/
+CS50 2022 Syllabus - https://cs50.harvard.edu/x/2022/
+CS50 2023 Syllabus - https://cs50.harvard.edu/x/2023/
+CS50 2024 Syllabus - https://cs50.harvard.edu/x/2023/
 
 Harvard University - https://www.harvard.edu/
 
@@ -14,7 +16,9 @@ Webpage 2 PDF - https://www.web2pdfconvert.com/
 
 Scratch - https://scratch.mit.edu/
 
-Problem sets - https://cs50.harvard.edu/x/2023/psets/
+2022 Problem sets - https://cs50.harvard.edu/x/2022/psets/
+2023 Problem sets - https://cs50.harvard.edu/x/2023/psets/
+2024 Problem sets - https://cs50.harvard.edu/x/2024/psets/
 
 CS50 Class page - https://cs50.me/cs50x
 
