@@ -101,3 +101,5 @@ Brian Yu - Senior Preceptor in Computer Science at Harvard University
 | 7      | Homework  | Fiftyville      | ![](https://geps.dev/progress/100)
 | 8      | Lab  | Trivia      | ![](https://geps.dev/progress/100)
 | 8      | Homework  | Homepage      | ![](https://geps.dev/progress/100)
+| 9      | Homework  | Birthdays      | ![](https://geps.dev/progress/100)
+| 9      | Homework  | Finance      | ![](https://geps.dev/progress/0)
