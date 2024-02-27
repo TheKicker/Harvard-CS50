@@ -1,0 +1,59 @@
+{% extends "layout.html" %}
+
+{% block title %}
+    Register
+{% endblock %}
+
+{% block main %}
+    <h1>Register an account</h1>
+    <form id="registration-form" action="/register" method="post">
+        <div class="form-group col-4 mx-auto my-1">
+            <input autofocus class="form-control" name="username" placeholder="Username" type="text" required>
+        </div>
+        <ul class="col-4 mx-auto mt-2">
+            <strong>Password must be: </strong>
+            <li>At least 12 characters long</li>
+            <li>Contains at least one uppercase letter</li>
+            <li>Contains at least one lowercase letter</li>
+            <li>Contains at least one symbol</li>
+            <li>Contains at least one number</li>
+        </ul>
+        <div class="form-group col-4 mx-auto my-1">
+            <input id="password-input" class="form-control" name="password" placeholder="Password" type="password" required>
+        </div>
+        <div class="form-group col-4 mx-auto my-1">
+            <input class="form-control" name="confirmation" placeholder="Confirm Password" type="password" required>
+        </div>
+    </br>
+        <button class="btn btn-primary" type="submit">Register</button>
+    </form>
+
+    <script>
+        // Add event listener to the form for submission
+        document.getElementById('registration-form').addEventListener('submit', function(event) {
+            // Get the password input and its value
+            var passwordInput = document.getElementById('password-input');
+            var password = passwordInput.value;
+
+            // Define regular expressions for password validation
+            var upperCaseRegex = /[A-Z]/;
+            var lowerCaseRegex = /[a-z]/;
+            var symbolRegex = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/;
+            var numberRegex = /[0-9]/;
+
+            // Check if the password meets all requirements
+            if (password.length < 12 || !upperCaseRegex.test(password) || !lowerCaseRegex.test(password) || !symbolRegex.test(password) || !numberRegex.test(password)) {
+                // Prevent form submission
+                event.preventDefault();
+
+                // Display error message
+                var passwordHelp = document.getElementById('password-help');
+                passwordHelp.textContent = "Password must be at least 12 characters long and contain at least one uppercase letter, one lowercase letter, one symbol, and one number.";
+                passwordHelp.style.color = "red";
+
+                // Clear the password field
+                passwordInput.value = "";
+            }
+        });
+    </script>
+{% endblock %}

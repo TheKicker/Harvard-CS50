@@ -6,7 +6,7 @@ CS50 2022 Syllabus - https://cs50.harvard.edu/x/2022/
 
 CS50 2023 Syllabus - https://cs50.harvard.edu/x/2023/
 
-CS50 2024 Syllabus - https://cs50.harvard.edu/x/2023/
+CS50 2024 Syllabus - https://cs50.harvard.edu/x/2024/
 
 Harvard University - https://www.harvard.edu/
 
@@ -33,6 +33,8 @@ me50/TheKicker - https://github.com/me50/TheKicker
 TheKicker/Harvard-CS50 - https://github.com/TheKicker/Harvard-CS50
 
 Pixel Art - https://cs50.ly/art
+
+CS50 Finance - https://finance.cs50.net/
 
 <hr>
 
@@ -102,4 +104,4 @@ Brian Yu - Senior Preceptor in Computer Science at Harvard University
 | 8      | Lab  | Trivia      | ![](https://geps.dev/progress/100)
 | 8      | Homework  | Homepage      | ![](https://geps.dev/progress/100)
 | 9      | Homework  | Birthdays      | ![](https://geps.dev/progress/100)
-| 9      | Homework  | Finance      | ![](https://geps.dev/progress/0)
+| 9      | Homework  | Finance      | ![](https://geps.dev/progress/71)
