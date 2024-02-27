@@ -1,8 +1,8 @@
 # <img src="harvard.png" height=20>&nbsp; Harvard University - CS50 Intro to Computer Science
 
- This repository is intended for storing my projects and files related to Harvard University's CS50x course. It is important to clarify that the repository is not intended for sharing answers or promoting academic dishonesty. If you are currently enrolled in the course, it is highly encouraged to complete the assignments independently and utilize the course materials for reference and learning purposes.
+ ** This repository is intended for storing my projects and files related to Harvard University's CS50x course. It is important to clarify that the repository is not intended for sharing answers or promoting academic dishonesty. This is a personal goal of mine to complete the CS50x course, and this repository serves to be a public log of my progress.
  
- Cav Lemasters, @TheKicker
+ <strong>If you are currently enrolled in the course, you must complete the assignments independently and utilize the course materials for reference and learning purposes.</strong>
 
 <br>
 
