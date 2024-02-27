@@ -1,5 +1,13 @@
 # <img src="harvard.png" height=20>&nbsp; Harvard University - CS50 Intro to Computer Science
 
+ This repository is intended for storing my projects and files related to Harvard University's CS50x course. It is important to clarify that the repository is not intended for sharing answers or promoting academic dishonesty. If you are currently enrolled in the course, it is highly encouraged to complete the assignments independently and utilize the course materials for reference and learning purposes.
+ 
+ Cav Lemasters, @TheKicker
+
+<br>
+
+## Links
+
 Presented by EdX - https://www.edx.org/course/introduction-computer-science-harvardx-cs50x
 
 CS50 2022 Syllabus - https://cs50.harvard.edu/x/2022/ 
@@ -36,7 +44,6 @@ Pixel Art - https://cs50.ly/art
 
 CS50 Finance - https://finance.cs50.net/
 
-<hr>
 
 ## About 
 
