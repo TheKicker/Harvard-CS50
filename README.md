@@ -6,6 +6,8 @@
 
 <br>
 
+<img src="CS50-complete.png" align=center>
+
 ## Links
 
 Presented by EdX - https://www.edx.org/course/introduction-computer-science-harvardx-cs50x
@@ -39,6 +41,8 @@ CS50 C Manual Pages -  https://manual.cs50.io/
 me50/TheKicker - https://github.com/me50/TheKicker
 
 TheKicker/Harvard-CS50 - https://github.com/TheKicker/Harvard-CS50
+
+Completed Course Certificate - https://cs50.harvard.edu/certificates/a04d3c67-4839-4832-bf82-c935b32c21d2
 
 Pixel Art - https://cs50.ly/art
 
@@ -112,3 +116,12 @@ Brian Yu - Senior Preceptor in Computer Science at Harvard University
 | 8      | Homework  | Homepage      | ![](https://geps.dev/progress/100)
 | 9      | Homework  | Birthdays      | ![](https://geps.dev/progress/100)
 | 9      | Homework  | Finance      | ![](https://geps.dev/progress/71)
+| 10      | Final Project  | Rocket Downrange      | ![](https://geps.dev/progress/100)
+
+
+## Final Project : Rocket Downrange 🚀
+Hello, class of Harvard's CS50; I am excited to present Rocket Downrange as my final project, showcasing the advancements of humanity in the exploration of outer space.  Feel free to check it out and let me know what you think!
+
+Per Aspera Ad Astra
+
+https://rocketdownrange.com
