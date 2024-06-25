@@ -1,3 +1,4 @@
-Cyber Security
+Submit Final Project
 
-:) 
+Instructions:
+https://cs50.harvard.edu/x/2023/project/
